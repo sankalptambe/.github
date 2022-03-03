@@ -9,9 +9,15 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    environment:
+      name: dev
+    env:
+      i_am_in: ${{ secrets.MY_SECRET }}
     steps:
       - uses: actions/checkout@v2
 
       - name: Run a one-line script
         run: echo Hello from WNS
+        
+      - name: Show my Secret
+        run: echo I am ${{ env.i_am_in }}
